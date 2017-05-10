@@ -5,7 +5,7 @@
              Title="Dev Camp Raffle">
     <ContentPage.Content>
         <StackLayout Spacing="0">
-            <ListView ItemsSource="{Binding ParticipantList}" SelectedItem="{Binding SelectedParticipant}">
+            <ListView ItemsSource="{Binding ParticipantList}" SelectedItem="{Binding SelectedParticipant, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Name}" Detail="{Binding CompanyName}"></TextCell>

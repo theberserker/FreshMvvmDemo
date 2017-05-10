@@ -4,6 +4,7 @@ using FreshMvvm;
 using FreshMvvmDemo.Models;
 using FreshMvvmDemo.Services;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,15 +20,18 @@ namespace FreshMvvmDemo.PageModels
 
         private ICommand _raffleCommand;
 
-        public IEnumerable<Participant> ParticipantList { get; set; }
+        public IList<Participant> ParticipantList { get; set; }
 
         public Participant SelectedParticipant
         {
             get { return null; }
             set
             {
-                CoreMethods.PushPageModel<ParticipantPageModel>(value);
-                RaisePropertyChanged();
+                if (value != null)
+                {
+                    CoreMethods.PushPageModel<ParticipantPageModel>(value);
+                    RaisePropertyChanged();
+                }
             }
         }
 
@@ -41,7 +45,7 @@ namespace FreshMvvmDemo.PageModels
         {
             base.Init(initData);
             _userDialogs.ShowLoading();
-            ParticipantList = await _participantsService.GetAll();
+            ParticipantList = (await _participantsService.GetAll()).ToList();
             RaisePropertyChanged(nameof(ParticipantList));
             _userDialogs.HideLoading();
         }
@@ -53,13 +57,9 @@ namespace FreshMvvmDemo.PageModels
 
         private async Task Raffle(object arg)
         {
-            var particiapnts = 
-                (await _participantsService.GetAll())
-                .ToList();
-
             var random = new Random();
-            int winnerIndex = random.Next(0, particiapnts.Count);
-            var winner = particiapnts[winnerIndex];
+            int winnerIndex = random.Next(0, ParticipantList.Count);
+            var winner = ParticipantList[winnerIndex];
             await CoreMethods.DisplayAlert("And the winner is....", winner.ToString() , "Ok");
         }
     }
