@@ -14,5 +14,10 @@
         public string Name { get; set; }
 
         public string CompanyName { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name} from {CompanyName}";
+        }
     }
 }
