@@ -1,17 +1,14 @@
 ﻿using FreshMvvmDemo.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FreshMvvm;
 
 namespace FreshMvvmDemo.PageModels
 {
-    public class ContactPageModel : FreshMvvm.FreshBasePageModel
+    public class ParticipantPageModel : FreshBasePageModel
     {
-        public Contact Contact { get; set; }
+        public Participant Participant { get; set; }
 
-        public ContactPageModel()
+        public ParticipantPageModel()
         {
 
         }
@@ -20,7 +17,7 @@ namespace FreshMvvmDemo.PageModels
         {
             base.Init(initData);
 
-            Contact = initData as Contact;
+            Participant = initData as Participant;
 
         }
 
@@ -29,7 +26,7 @@ namespace FreshMvvmDemo.PageModels
         {
             base.ViewIsAppearing(sender, e);
 
-            string message = string.Format("Entramos al detalle del contacto {0}", Contact.Name);
+            string message = string.Format("Entramos al detalle del contacto {0}", Participant.Name);
             CoreMethods.DisplayAlert("Detalle", message, "Ok");
         }
     }

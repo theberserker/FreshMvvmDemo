@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace FreshMvvmDemo.Services
 {
-    public interface IContactsService
+    public interface IParticipantsService
     {
-        Task<IEnumerable<Contact>> GetContacts();
+        Task<IEnumerable<Participant>> GetContacts();
     }
 }

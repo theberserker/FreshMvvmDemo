@@ -18,14 +18,14 @@ namespace FreshMvvmDemo
         {
             ConfigureIOC();
 
-            var contactList = FreshPageModelResolver.ResolvePageModel<ContactListPageModel>();
+            var contactList = FreshPageModelResolver.ResolvePageModel<ParticipantListPageModel>();
             var navContainer = new FreshNavigationContainer(contactList);
             MainPage = navContainer;
         }
 
         private void ConfigureIOC()
         {
-            FreshIOC.Container.Register<IContactsService, ContactsService>();
+            FreshIOC.Container.Register<IParticipantsService, ParticipantsService>();
             FreshIOC.Container.Register<IUserDialogs>(UserDialogs.Instance);
         }
 
