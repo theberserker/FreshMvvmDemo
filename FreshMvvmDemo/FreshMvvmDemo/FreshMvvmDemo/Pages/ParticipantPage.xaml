@@ -5,8 +5,8 @@
 
   <ContentPage.Content>
     <StackLayout>
-      <Entry Text="{Binding Contact.Name}"></Entry>
-      <Entry Text="{Binding Contact.Id}"></Entry>
+            <Entry Text="{Binding Participant.Name}"></Entry>
+            <Entry Text="{Binding Participant.CompanyName}"></Entry>
     </StackLayout>
   </ContentPage.Content>
   

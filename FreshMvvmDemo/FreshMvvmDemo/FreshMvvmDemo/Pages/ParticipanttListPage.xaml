@@ -7,7 +7,7 @@
         <ListView ItemsSource="{Binding ParticipantList}" SelectedItem="{Binding SelectedParticipant}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Id}"></TextCell>
+                    <TextCell Text="{Binding Name}" Detail="{Binding CompanyName}"></TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -1,18 +1,19 @@
-﻿using Acr.UserDialogs;
-using FreshMvvm;
-using FreshMvvmDemo.PageModels;
-using FreshMvvmDemo.Pages;
-using FreshMvvmDemo.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
+using Acr.UserDialogs;
+using FreshMvvm;
+using FreshMvvmDemo.PageModels;
+using FreshMvvmDemo.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace FreshMvvmDemo
 {
-    public class App : Application
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class App : Application
     {
         public App()
         {

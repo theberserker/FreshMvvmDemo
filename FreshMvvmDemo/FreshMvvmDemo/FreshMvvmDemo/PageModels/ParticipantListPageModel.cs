@@ -8,7 +8,7 @@ namespace FreshMvvmDemo.PageModels
 {
     public class ParticipantListPageModel : FreshBasePageModel
     {
-        public IEnumerable<Participant> ContactList { get; set; }
+        public IEnumerable<Participant> ParticipantList { get; set; }
 
         public Participant SelectedParticipant
         {
@@ -20,13 +20,13 @@ namespace FreshMvvmDemo.PageModels
             }
         }
 
-        readonly IParticipantsService participantsService;
+        readonly IParticipantsService _participantsService;
 
         readonly IUserDialogs _userDialogs;
 
         public ParticipantListPageModel(IParticipantsService participantsService, IUserDialogs userDialogs)
         {
-            this.participantsService = participantsService;
+            this._participantsService = participantsService;
             this._userDialogs = userDialogs;
         }
 
@@ -34,8 +34,8 @@ namespace FreshMvvmDemo.PageModels
         {
             base.Init(initData);
             _userDialogs.ShowLoading();
-            ContactList = await participantsService.GetContacts();
-            RaisePropertyChanged(nameof(ContactList));
+            ParticipantList = await _participantsService.GetAll();
+            RaisePropertyChanged(nameof(ParticipantList));
             _userDialogs.HideLoading();
         }
     }
